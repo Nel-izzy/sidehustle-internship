@@ -1,14 +1,10 @@
 <?php
-$email;
 if(!isset($_SESSION)){
     session_start();
     $email = $_SESSION["email"];
-    if(empty($email)){
+    if(empty($_SESSION["email"])){
         header("Location:/sidehustle-internship/e-market/");
-    }else{
-        echo "<h3>Welcome ".$email;
     }
-
 }
 
 ?>

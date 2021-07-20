@@ -6,8 +6,6 @@ $error ="";
 if(isset($_POST["signup"])){
     session_start();
   
-    
-
     if(empty($_POST['email']) or empty($_POST["pword"]) or empty($_POST['phone']) or empty($_POST['lname']) or empty($_POST['fname'])){
         $error = "<small style='color: orange'>One or more fields cannot be empty</small>";
     }else{
