@@ -34,20 +34,32 @@ $userID;
              display:flex;
              flex-direction:row;
              flex: auto;
+             margin-top:50px;
          }
          article{
              display: grid;
-             grid-template-columns: repeat(4, 1fr);
-             padding-left:20px;
+             grid-template-columns: repeat(3, 1fr);
+             grid-gap: 20px;
+             margin-top:20px;
              margin-right: 100px;
          }
-         article .product{
-             margin-left: 20px;
+         #product:hover{
+            transform: scale(1.1);
+         }
+         #product{
+             margin-left:20px;
+             padding-left:10px;
+             border: 1px solid #bcbcbc;
+             border-radius:10px;
+             transition: all .2s ease-in-out;
+             cursor: pointer;
+         }
+         #edit{
+             margin:0 10px;
+
          }
          
-         article, aside {
-             overflow-y: auto;
-         }
+        
      </style>
 </head>  
 <body>
@@ -60,16 +72,16 @@ $userID;
     ?>
         <article>
         <?php while($row = mysqli_fetch_assoc($result)){ ?>
-            <div classname='product'>
+            <div id='product'>
             <p><?php echo $row['title']; ?></p>
-            <p><?php echo $row['price']; ?></p>
+            <p><?php echo 'N'.$row['price']; ?></p>
             <p> <img src="images/<?php echo $row['img']; ?>" > </p>
            <?php 
             if($userID === $row['userID']){
            ?>
             <p>
                 <span>You created this product</span>
-                <span><a href="/sidehustle-internship/e-market/edit.php?edit=<?php echo $row['prodID']; ?>">Edit</a></span>
+                <span id='edit'><a href="/sidehustle-internship/e-market/edit.php?edit=<?php echo $row['prodID']; ?>">Edit</a></span>
                <span><a href="dashboard.php?delete=<?php echo $row['prodID']; ?>">Delete</a></span>
               
             </p>
